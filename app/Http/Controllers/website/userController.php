@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\verifymail;
+use Laravel\Socialite\Facades\Socialite;
 
 class userController extends Controller
 {
@@ -130,6 +131,68 @@ class userController extends Controller
             return redirect()->back()->with("message", "تم تغيير الرقم السري بنجاح");
         } else {
             return redirect()->back()->with("message", "password changed successfully");
+        }
+    }
+
+    public function signinfacebook()
+    {
+
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function signingoogle()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function signinSocialredirect()
+    {
+        $url = request()->getRequestUri();
+        $url = explode("/", $url);
+        $social_type = $url[2];
+
+        if ($social_type == "google") {
+            $social_user = Socialite::driver('google')->stateless()->user();
+        } else {
+            $social_user = Socialite::driver('facebook')->stateless()->user();
+        }
+
+        if ($social_user && $social_user != null) {
+            // $id =  $user->user->id
+            $user = users::where("social_id", $social_user->getId())->first();
+            if ($user) {
+                Auth::loginUsingId($user->id);
+                return redirect("/");
+            } else {
+                //
+                try {
+                    $user = new users();
+                    $user->name = $social_user->getName();
+                    $user->email = $social_user->getEmail();
+                    $user->social_id = $social_user->getId();
+                    $user->type = 2;
+                    $user->status = 1;
+                    $user->password = Hash::make($social_user->getId());
+                    $user->social_img = $social_user->getAvatar();
+                    $user->save();
+                    Auth::loginUsingId($user->id);
+                    return redirect("/");
+                } catch (\Exception $e) {
+                    $lang = Lang::locale();
+                    if (!in_array($lang, ['en'])) {
+                        return redirect("/login")->with("error", "يرجى محاولة تسجيل الدخول عن طريق وسائل التواصل الاجتماعي مرة أخرى");
+                    } else {
+                        return redirect("/login")->with("error", "please try to login by social again");
+                    }
+                }
+            }
+        } else {
+            $lang = Lang::locale();
+            if (!in_array($lang, ['en'])) {
+                return redirect("/login")->with("error", "يرجى محاولة تسجيل الدخول عن طريق وسائل التواصل الاجتماعي مرة أخرى");
+            } else {
+                return redirect("/login")->with("error", "please try to login by social again");
+            }
         }
     }
 

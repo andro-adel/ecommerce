@@ -9,7 +9,7 @@ input[type=text], input[type=password], input[type=number], input[type=date], in
 }
 </style>
 
-<div class="row col-12 mx-0 px-0">
+<div class="row col-12 mx-0 px-0" style="margin-top: 10rem!important">
 
     {{-- <img style="width: 100%;height:100%;" src="{{ asset('images/whatsapp_image_20201110_at_9.17.41_am.jpg') }}"> --}}
 
