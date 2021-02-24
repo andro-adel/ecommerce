@@ -39,3 +39,11 @@ Route::get('/resetpassword', [userController::class, 'resetpassword']);
 
 Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
 
+Route::get('/sign-in/facebook', [userController::class, 'signinfacebook']);
+
+Route::get('/sign-in/google', [userController::class, 'signingoogle']);
+
+Route::get('/sign-in/facebook/redirect', [userController::class, 'signinSocialredirect']);
+
+Route::get('/sign-in/google/redirect', [userController::class, 'signinSocialredirect']);
+
