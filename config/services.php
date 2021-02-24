@@ -31,15 +31,15 @@ return [
     ],
 
     'facebook' => [
-        'client_id' => '3635206376704901',
-        'client_secret' => '94e13ec4799c637584fe6b05b092512e',
-        'redirect' => 'https://127.0.0.1:8000/sign-in/facebook/redirect',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT_URL'),
     ],
 
     'google' => [
-        'client_id' => '858945957063-825jrmcmui5j3h4pl39s9kaihqcj0ad9.apps.googleusercontent.com',
-        'client_secret' => '8r8GdGgAcU0ZXgjHStXxOx4V',
-        'redirect' => 'https://127.0.0.1:8000/sign-in/google/redirect',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT_URL')
     ],
 
 ];
