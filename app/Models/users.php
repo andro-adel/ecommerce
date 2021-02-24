@@ -21,6 +21,7 @@ class users extends Authenticatable implements MustVerifyEmail
         'phonenumber',
         'type',
         'status',
+        'expire',
         'created_at',
         'updated_at'
     ];
