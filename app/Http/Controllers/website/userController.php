@@ -28,6 +28,18 @@ class userController extends Controller
     public function login()
     {
         $credentials =  request()->only('email', 'password');
+        // $user = request()-> input (key: 'user');
+        // $field = filter_var($user, FILTER_VALIDATE_EMAIL ) ? 'email' : 'phonenumber' ;
+
+        // $field = '';
+        // if(filter_var($user, FILTER_VALIDATE_EMAIL )){
+        //     $field = 'email';
+        // }else {
+        //     $field = 'phonenumber';
+        // }
+
+        // request()->merge([$field => $user]);
+
         $remember_me = false;
         if (request('remember')) {
             $remember_me = true;

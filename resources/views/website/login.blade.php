@@ -26,7 +26,7 @@
                     
                         <div class="@if(Lang::locale() == 'ar') text-arabic @endif"> <Strong class="regis" style="color: #5E2719;font-size: 20px ">{{ __('Email Address') }}</Strong> </div>
 
-                        <div class="@if(Lang::locale() == 'ar') text-arabic @endif"> <input type="email" value="" required type="email" id="email" name="email" placeholder="{{ __('Enter Email') }}"> </div><br>
+                        <div class="@if(Lang::locale() == 'ar') text-arabic @endif"> <input type="email" value="" required id="email" name="email" placeholder="{{ __('Enter Email') }}"> </div><br>
 
                         <div class="@if(Lang::locale() == 'ar') text-arabic @endif"> <Strong class="regis" style="color: #5E2719;font-size: 20px ">{{ __('Password') }}</Strong> </div>
 
