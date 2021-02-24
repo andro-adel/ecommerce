@@ -28,6 +28,6 @@ class notifymail extends Mailable
      */
     public function build()
     {
-        return $this->subject('notify email')->view('mail.notify_email',compact(varname:'data'));
+        return $this->subject('notify email')->view('mail.notify_email');
     }
 }
