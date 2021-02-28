@@ -16,7 +16,7 @@ Route::get('/logout', [authController::class, 'logout'])->middleware('auth');
 
 
 // admins routes
-Route::middleware('auth', 'users')->group(function () {
+Route::middleware('auth', 'users', 'checkstatus')->group(function () {
 
     Route::prefix('admin')->group(function () {
 
@@ -27,7 +27,7 @@ Route::middleware('auth', 'users')->group(function () {
 
 
         // super admins routes only
-        Route::middleware('super')->group(function () {
+        Route::middleware('super', 'checkstatus')->group(function () {
 
             
 
