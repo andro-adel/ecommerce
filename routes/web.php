@@ -16,7 +16,17 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 |
 */
 
-Route::post('/switch-lang', [homeController::class, 'switch_language']);
+// Route::post('/switch-lang', [homeController::class, 'switch_language']);
+
+    Route::post('/login', [userController::class, 'login']);
+
+    Route::post('/register', [userController::class, 'register']);
+
+    Route::post('/logout', [userController::class, 'logout']);
+
+    Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
+
+    Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
 {
@@ -27,21 +37,11 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
     Route::get('/register', [userController::class, 'register_view']);
 
-    Route::post('/login', [userController::class, 'login']);
-
-    Route::post('/register', [userController::class, 'register']);
-
-    Route::post('/logout', [userController::class, 'logout']);
-
     Route::get('/verifymail', [userController::class, 'verifymail']);
 
     Route::get('/forgetpassword', [userController::class, 'forget_password']);
 
-    Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
-
     Route::get('/resetpassword', [userController::class, 'resetpassword']);
-
-    Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
 
     Route::get('/sign-in/facebook', [userController::class, 'signinfacebook']);
 

@@ -56,13 +56,22 @@ class userController extends Controller
             //     return redirect()->back()->with('error', 'wrong email or password');
             // }
 
-            if (LaravelLocalization::isSupported('ar')) {
-                return redirect()->back()->with('error', 'خطأ في البريد الالكتروني او كلمة المرور');
-            } else {
-                return redirect()->back()->with('error', 'wrong email or password');
-            }
+            // $lang = LaravelLocalization::setLocale();
+            // if (!in_array($lang, ['en'])) {
+            //     return redirect()->back()->with('error', 'خطأ في البريد الالكتروني او كلمة المرور');
+            // } else {
+            //     return redirect()->back()->with('error', 'wrong email or password');
+            // }
 
-            // return redirect()->back()->with('error', __(key: 'auth.failed'));
+
+            // if (LaravelLocalization::setLocale() == 'en') {
+            //     return redirect()->back()->with('error', 'خطأ في البريد الالكتروني او كلمة المرور');
+            // } else {
+            //     return redirect()->back()->with('error', 'wrong email or password');
+            // }
+
+            return redirect()->back()->with('error', __('auth.failed'));
+
         }
     }
 
