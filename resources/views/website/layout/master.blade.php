@@ -7,10 +7,10 @@
 
         @include('website.layout.navbar')
 
-
+            <div style="padding-top: 8rem!important;">
                 @yield('body')
+            </div>
 
-            
         @include('website.layout.footer')
 
     </body>

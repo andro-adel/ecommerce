@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\verifymail;
 use Laravel\Socialite\Facades\Socialite;
+use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 class userController extends Controller
 {
@@ -48,12 +49,20 @@ class userController extends Controller
 
             return redirect('/');
         } else {
-            $lang = Lang::locale();
-            if (!in_array($lang, ['en'])) {
+            // $lang = Lang::locale();
+            // if (!in_array($lang, ['en'])) {
+            //     return redirect()->back()->with('error', 'خطأ في البريد الالكتروني او كلمة المرور');
+            // } else {
+            //     return redirect()->back()->with('error', 'wrong email or password');
+            // }
+
+            if (LaravelLocalization::isSupported('ar')) {
                 return redirect()->back()->with('error', 'خطأ في البريد الالكتروني او كلمة المرور');
             } else {
                 return redirect()->back()->with('error', 'wrong email or password');
             }
+
+            // return redirect()->back()->with('error', __(key: 'auth.failed'));
         }
     }
 
