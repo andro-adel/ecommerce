@@ -15,35 +15,39 @@ use App\Http\Controllers\website\userController;
 |
 */
 
-Route::get('', [homeController::class, 'index']);
-
 Route::post('/switch-lang', [homeController::class, 'switch_language']);
 
-Route::get('/login', [userController::class, 'login_view']);
+Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
+{
 
-Route::get('/register', [userController::class, 'register_view']);
+    Route::get('', [homeController::class, 'index']);
 
-Route::post('/login', [userController::class, 'login']);
+    Route::get('/login', [userController::class, 'login_view']);
 
-Route::post('/register', [userController::class, 'register']);
+    Route::get('/register', [userController::class, 'register_view']);
 
-Route::post('/logout', [userController::class, 'logout']);
+    Route::post('/login', [userController::class, 'login']);
 
-Route::get('/verifymail', [userController::class, 'verifymail']);
+    Route::post('/register', [userController::class, 'register']);
 
-Route::get('/forgetpassword', [userController::class, 'forget_password']);
+    Route::post('/logout', [userController::class, 'logout']);
 
-Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
+    Route::get('/verifymail', [userController::class, 'verifymail']);
 
-Route::get('/resetpassword', [userController::class, 'resetpassword']);
+    Route::get('/forgetpassword', [userController::class, 'forget_password']);
 
-Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
+    Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
 
-Route::get('/sign-in/facebook', [userController::class, 'signinfacebook']);
+    Route::get('/resetpassword', [userController::class, 'resetpassword']);
 
-Route::get('/sign-in/google', [userController::class, 'signingoogle']);
+    Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
 
-Route::get('/sign-in/facebook/redirect', [userController::class, 'signinSocialredirect']);
+    Route::get('/sign-in/facebook', [userController::class, 'signinfacebook']);
 
-Route::get('/sign-in/google/redirect', [userController::class, 'signinSocialredirect']);
+    Route::get('/sign-in/google', [userController::class, 'signingoogle']);
 
+    Route::get('/sign-in/facebook/redirect', [userController::class, 'signinSocialredirect']);
+
+    Route::get('/sign-in/google/redirect', [userController::class, 'signinSocialredirect']);
+
+});
