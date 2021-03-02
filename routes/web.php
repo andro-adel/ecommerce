@@ -51,5 +51,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
     Route::get('/sign-in/google/redirect', [userController::class, 'signinSocialredirect']);
 
-    Route::get('/video', [videoController::class, 'index']);
+    Route::get('/video', [videoController::class, 'index'])->middleware('authweb');
 });

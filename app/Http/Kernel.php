@@ -77,6 +77,7 @@ class Kernel extends HttpKernel
         'users' => \App\Http\Middleware\users::class,
         'admins' =>  \App\Http\Middleware\admins::class,
         'super' =>  \App\Http\Middleware\super::class,
+        'authweb' =>  \App\Http\Middleware\authweb::class,
         'checkstatus' => \App\Http\Middleware\CheckStatus::class,
         'localize'                => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect'    => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
