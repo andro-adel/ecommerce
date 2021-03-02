@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\homeController;
 use App\Http\Controllers\website\userController;
+use App\Http\Controllers\website\videoController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -30,7 +31,6 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
 {
-
     Route::get('', [homeController::class, 'index']);
 
     Route::get('/login', [userController::class, 'login_view']);
@@ -51,4 +51,5 @@ Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'lo
 
     Route::get('/sign-in/google/redirect', [userController::class, 'signinSocialredirect']);
 
+    Route::get('/video', [videoController::class, 'index']);
 });
