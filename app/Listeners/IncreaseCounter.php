@@ -5,6 +5,7 @@ namespace App\Listeners;
 use App\Events\VideoViwer;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Queue\InteractsWithQueue;
+use Illuminate\Support\Facades\Auth;
 
 class IncreaseCounter
 {
@@ -31,9 +32,11 @@ class IncreaseCounter
 
     public function updateviwer($video){
 
-        $video -> viewers = $video -> viewers + 1;
-
-        $video -> save();
-
+        if(Auth::user())
+        {
+            $video -> viewers = $video -> viewers + 1;
+            
+            $video -> save();
+        }
     }
 }
