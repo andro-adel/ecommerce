@@ -44,3 +44,4 @@
 <script src="{{asset('website/js/backend.js')}}"></script>
 <script src="{{asset('website/js/alertify.min.js')}}"></script>
 <script src="{{asset('website/js/scripts.js')}}"></script>
+<script src="{{asset('website/js/fontAwesome.min.js')}}"></script>

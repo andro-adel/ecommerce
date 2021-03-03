@@ -8,11 +8,11 @@
 
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="{{ asset('website/css/bootstrap.min.css') }}" >
-<link rel="stylesheet" href="{{ asset('website/css/fontAwesome.min.css') }}" >
-<link rel="stylesheet" href="{{ asset('website/css/select2.min.css') }}" >
-<link rel="stylesheet" href="{{ asset('website/css/backend.css') }}" >
-<link rel="stylesheet" href="{{ asset('website/css/styles.css') }}" >
+<link rel="stylesheet" href="{{ asset('website/css/bootstrap.min.css') }}">
+<link rel="stylesheet" href="{{ asset('website/css/fontAwesome.min.css') }}">
+<link rel="stylesheet" href="{{ asset('website/css/select2.min.css') }}">
+<link rel="stylesheet" href="{{ asset('website/css/backend.css') }}">
+<link rel="stylesheet" href="{{ asset('website/css/styles.css') }}">
 
 <!-- include the style -->
 <link rel="stylesheet" href="{{ asset('website/css/alertify.min.css') }}" />
