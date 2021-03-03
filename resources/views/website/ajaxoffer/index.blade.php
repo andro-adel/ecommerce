@@ -17,61 +17,26 @@
 
         <table class="table table-light table-striped table-hover">
             <thead>
-                <th> # </th>
-                <th> image </th>
-                <th> Name </th>
-                <th> Email </th>
-                <th> phoneNumber </th>
-                <th> Branch </th>
-                <th> Status </th>
-                <th> Action </th>
+                <th> ID </th>
+                <th> name_en </th>
+                <th> name_ar </th>
+                <th> details_en </th>
+                <th> details_ar </th>
+                <th> price </th>
             </thead>
-            {{-- <tbody>
-                        
-                        @foreach ($admins as $admin)
-                            <tr>
-                                <td> <a href="/admin/manage-admins/{{ $admin->id }}"> {{  $admin->id }} </a> </td>
-            <td>
-                @if ($admin->image)
-                <img class="img-thumbnail" src="{{  asset( "/storage//" . $admin->image->image) }}"
-                    onerror="this.src='/storage/users/user-default.png'">
-                @else
+            <tbody>
 
-                <img class="img-thumbnail" src="{{ asset( "/storage/users/user-default.png") }}">
-                @endif
-            </td>
-            <td> <a href="/admin/manage-admins/{{ $admin->id }}"> {{  $admin->name }} </a></td>
-            <td> {{  $admin->email }} </td>
-            <td> {{  $admin->phoneNumber  }} </td>
-            <td> {{  ($admin->branch) ? $admin->branch->name_en : 'No' }} </td>
-            <td>
-                @if($admin->status == 1)
-                <span class="bg bg-success text-white text-sm px-2 rounded-pill statusBackground{{ $admin->id }}">Active
-                </span>
-                @else
-                <span
-                    class="bg bg-danger text-white text-sm px-2 rounded-pill statusBackground{{ $admin->id }}">InActive
-                </span>
-                @endif
-            </td>
-            <td>
-                <span> <a href="/admin/manage-admins/{{ $admin->id }}"> <i class="fas fa-edit text-info mr-2"></i> </a>
-                </span>
-
-                <span>
-                    <a data-toggle="modal" data-target="#toggleStatuts" onclick="setAdminId({{ $admin->id }})"
-                        class="cursor">
-                        <i
-                            class="statusIcon{{ $admin->id }} @if($admin->status == 1) text-success fas fa-user-check  @else fas fa-user-times text-danger @endif"></i>
-                    </a>
-                </span>
-                <span> <a href="/admin/address?user_id={{ $admin->id }}"> <i
-                            class="fas fa-map-marker-alt text-info ml-2" aria-hidden="true"></i> </a> </span>
-
-            </td>
-            </tr>
-            @endforeach
-            </tbody> --}}
+                {{-- @foreach ($offer as $offe)
+                <tr>
+                    <td>{{ $offe->id }} </td>
+                <td>{{ $offe->name_en }} </td>
+                <td>{{ $offe->name_ar }} </td>
+                <td>{{ $offe->details_en }} </td>
+                <td>{{ $offe->details_ar }} </td>
+                <td>{{ $offe->price }} </td>
+                </tr>
+                @endforeach --}}
+            </tbody>
         </table>
 
         {{-- <div class="container">

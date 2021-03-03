@@ -11,7 +11,12 @@ class offer extends Model
 
     protected $table = 'offer';
 
-    protected $fillable = ['name_en','name_ar','details_en','details_ar','price'];
+    protected $fillable = ['name_en', 'name_ar', 'details_en', 'details_ar', 'price'];
 
     public $timestamps = false;
+
+    public function image()
+    {
+        return $this->morphOne(images::class, 'imageable');
+    }
 }

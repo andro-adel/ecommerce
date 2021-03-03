@@ -11,7 +11,9 @@
     </div>
 
 
-    <form id="ajaxform">
+    <form method="POST" id="ajaxform" enctype="multipart/form-data">
+        @csrf
+
         <div class="form-group">
             <label for="name_ar">Name Arabic</label>
             <input value="{{ old('name_ar') }}" type="text"
@@ -70,12 +72,25 @@
 
         <div class="form-group">
             <label for="price">Price</label>
-            <input value="{{ old('price') }}" type="text" class="form-control  @error('price') border-danger @enderror"
-                id="price" name="price">
+            <input value="{{ old('price') }}" type="number"
+                class="form-control  @error('price') border-danger @enderror" id="price" name="price">
 
             @error('price')
             @foreach ($errors->get('price') as $error)
             <span class="text-sm text-danger mb-2"> {{ $error }}</span>
+            @endforeach
+            @enderror
+
+        </div>
+
+        <div class="form-group">
+            <label for="image">Image</label>
+            <input value="{{ old('image') }}" type="file" class="form-control  @error('image') border-danger @enderror"
+                id="image" name="image">
+
+            @error('image')
+            @foreach ($errors->get('image') as $error)
+            <span class="text-sm text-danger mb-2"> {{  $error }}</span>
             @endforeach
             @enderror
 
@@ -98,10 +113,12 @@
 <script>
     $(".save-data").click(function(event){
     event.preventDefault();
+            var formdata = new FormData($('#ajaxform')[0]);
             let _token = $('meta[name="csrf-token"]').attr('content');
             $.ajax({
             type:'POST',
             url:'/offer/store',
+            enctype:"multipart/form-data",
             data: {
             _token: _token,
             'name_en': $("input[name='name_en']").val() ,
@@ -109,8 +126,9 @@
             'details_en': $("input[name='details_en']").val(),
             'details_ar': $("input[name='details_ar']").val(),
             'price': $("input[name='price']").val(),
-            }
-            , success:function(response){
+            // 'image': $("input[name='image']").val(),
+            },
+            success:function(response){
             console.log(response);
             if(response) {
             $('.success').text(response.success);
