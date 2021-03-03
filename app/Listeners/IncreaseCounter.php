@@ -27,16 +27,20 @@ class IncreaseCounter
      */
     public function handle(VideoViwer $event)
     {
-        $this -> updateviwer($event -> video);
+        if (!session()->has(key: 'videoisvisited')) {
+
+            $this->updateviwer($event->video);
+        } else {
+            return false;
+        }
     }
 
-    public function updateviwer($video){
+    public function updateviwer($video)
+    {
+        $video->viewers = $video->viewers + 1;
 
-        if(Auth::user())
-        {
-            $video -> viewers = $video -> viewers + 1;
-            
-            $video -> save();
-        }
+        $video->save();
+
+        session()->put('videoisvisited', $video->id);
     }
 }
