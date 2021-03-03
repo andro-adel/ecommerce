@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\website\homeController;
 use App\Http\Controllers\website\userController;
 use App\Http\Controllers\website\videoController;
+use App\Http\Controllers\website\offerController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 /*
@@ -19,18 +20,21 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 
 // Route::post('/switch-lang', [homeController::class, 'switch_language']);
 
-    Route::post('/login', [userController::class, 'login']);
+Route::post('/offer/store', [offerController::class, 'store']);
 
-    Route::post('/register', [userController::class, 'register']);
+Route::post('/login', [userController::class, 'login']);
 
-    Route::post('/logout', [userController::class, 'logout']);
+Route::post('/register', [userController::class, 'register']);
 
-    Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
+Route::post('/logout', [userController::class, 'logout']);
 
-    Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
+Route::post('/forgetpassword', [userController::class, 'reset_password_request']);
 
-Route::group(['prefix' => LaravelLocalization::setLocale(),'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]], function()
-{
+Route::post('/resetpassword', [userController::class, 'resetpassword_request']);
+
+Route::group(['prefix' => LaravelLocalization::setLocale(), 'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']], function () {
+    Route::resource('/offer', offerController::class);
+
     Route::get('', [homeController::class, 'index']);
 
     Route::get('/login', [userController::class, 'login_view']);
